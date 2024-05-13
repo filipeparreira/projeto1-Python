@@ -43,7 +43,7 @@ while True:
         print(8*"-" + " Deposito " + 8*"-")
         valor: int = int(input("Valor: R$ "))
         if valor <= 0:
-            print("Valor inválido.")
+            print(f"Valor inválido.\n{30*"-"}")
         else:
             print("Valor depositado com sucesso.")
             saldo += valor
@@ -52,10 +52,28 @@ while True:
             
     
     elif opcao == 2:
-        print("Saque")
+        print(f"{8*"-"} Saque {8*"-"}")
+        valor: int = int(input("Valor: R$ "))
+
+        if valor > saldo or numero_saques == LIMITE_SAQUES or valor > limite:
+            if valor > saldo:
+                print(f"Erro na operação: Valor indisponivel em conta.\n{30*"-"}")
+            elif numero_saques == LIMITE_SAQUES:
+                print(f"Erro na operação: Quantidade de saques diários atingido.\n{30*"-"}")
+            elif valor > limite:
+                print(f"Erro na operação: Valor acima do limite de saque permitido.\n{30*"-"}")
+        else:
+            print("Valor sacado com sucesso.")
+            saldo -= valor
+            saques.append(valor)
+            numero_saques += 1
+            print(f"Saldo atual: R$ {saldo}.00\nNumero de saques realizados hoje: {numero_saques}\n{30*"-"}")
 
     elif opcao == 3:
-        print("Extrato")
+        print(f"{8*'-'} Extrato {8*'-'}")
+        saldo += "Saques".center(20, '-') + '\n'
+        for valor in saques:
+            saldo += "R$"
 
     elif opcao == 4:
         break 
