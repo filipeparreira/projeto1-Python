@@ -33,12 +33,23 @@ limite: int = 500
 extrato: str = ""
 numero_saques: int = 0
 LIMITE_SAQUES: int = 3
+saques: int = []
+depositos: int = []
 
 while True:
     opcao: int = int(input(menu))
 
     if opcao == 1:
-        print("Deposito")
+        print(8*"-" + " Deposito " + 8*"-")
+        valor: int = int(input("Valor: R$ "))
+        if valor <= 0:
+            print("Valor inválido.")
+        else:
+            print("Valor depositado com sucesso.")
+            saldo += valor
+            depositos.append(valor)
+            print(f"Saldo atual: R$ {saldo}.00\n{30*"-"}")
+            
     
     elif opcao == 2:
         print("Saque")
