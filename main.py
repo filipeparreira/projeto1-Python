@@ -70,16 +70,16 @@ while True:
             print(f"Saldo atual: R$ {saldo}.00\nNumero de saques realizados hoje: {numero_saques}\n{30*"-"}")
 
     elif opcao == 3:
-        print(f" Extrato ".center(20, '-'))
-        extrato += " Saques ".center(20, '-') + '\n'
+        print(f" Extrato ".center(30, '-'))
+        extrato += '|' +" Saques ".center(30, '-') + '|\n'
         for valor in saques:
-            extrato += f"R$ {valor}.00".ljust(20, '-') + '\n'
+            extrato += '|' + f"R$ {valor}.00".ljust(30, '-') + '|\n'
         
-        extrato += "\n" + " Depositos ".center(20, '-') + '\n'
+        extrato += "\n|" + " Depositos ".center(30, '-') + '|\n'
         for valor in depositos:
-            extrato += f"R$ {valor}.00".ljust(20, '-') + '\n'
+            extrato += '|' + f"R$ {valor}.00".ljust(30, '-') + '|\n'
         
-        extrato += "\n" + f" Saldo em conta: R$ {saldo}.00 ".center(20, '-')
+        extrato += "\n|" + f" Saldo em conta: R$ {saldo}.00 ".center(30, '-') + f"|\n{30*'-'}"
 
         print(extrato)
 
