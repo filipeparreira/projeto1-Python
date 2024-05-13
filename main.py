@@ -51,6 +51,7 @@ while True:
             print(f"Saldo atual: R$ {saldo}.00\n{30*"-"}")
             
     
+    
     elif opcao == 2:
         print(f"{8*"-"} Saque {8*"-"}")
         valor: int = int(input("Valor: R$ "))
