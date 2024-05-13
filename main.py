@@ -1,4 +1,6 @@
 '''
+Parte 1
+
     Criar um sistema bancario com as operacoes de saque, deposito e extrato
 
     Deposito: 
@@ -17,6 +19,34 @@
         - Listar todos os depositos e saques da conta 
         - No fim da listagem deve exibir o saldo atual da conta
         - Os valores devem ser exibidos no formato R$ xxx.xx
+
+Parte 2
+        
+    Atualizar o sistema bancario ja criado:
+        - Separar as operacoes em funcoes 
+            - Sugestao de argumentos para cada funcao 
+                - saque(saldo, valor, extrato, limite, numero_saques, limite_saques) = saldo e extrato # Keyword Only
+                - deposito(saldo, valor, extrato) = saldo e extrato # Positional Only
+                - extrato(saldo **Positional Only, extrato **Keyword Only)
+        
+            - Implementar mais duas funcoes
+                - Criar Usuario 
+                - Criar Conta Corrente
+                - (Opcional) Criar Listar Contas
+
+            - Criar Usuario:
+                - Deve armazenar os usuarios em uma lista 
+                - Um usuario tem nome, data de nascimento, cpf, endereco
+                - O endereco eh uma string formada por logradouro, numero - bairro - cidade/sigla estado
+                - Em cpf, deve ser armazenado somente numeros 
+                - Nao pode cadastrar dois usuarios com o mesmo cpf
+            
+            - Criar Conta Corrente:
+                - Deve armazenar as contas em uma lista 
+                - Uma conta tem agencia, numero de conta e usuario
+                - O numero de conta e sequencial, iniciado em 1
+                - O numero da agencia é fixo "0001"
+                - O usuario pode ter mais de uma conta, mas uma conta pertence somente a 1 usuario 
 '''
 
 
@@ -51,7 +81,7 @@ while True:
             print(f"Saldo atual: R$ {saldo}.00\n{30*"-"}")
             
     
-    
+
     elif opcao == 2:
         print(f"{8*"-"} Saque {8*"-"}")
         valor: int = int(input("Valor: R$ "))
