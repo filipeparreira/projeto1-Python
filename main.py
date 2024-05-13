@@ -18,3 +18,36 @@
         - No fim da listagem deve exibir o saldo atual da conta
         - Os valores devem ser exibidos no formato R$ xxx.xx
 '''
+
+
+menu = '''
+    [1] Depositar
+    [2] Sacar 
+    [3] Extrato
+    [4] Sair
+
+=> '''
+
+saldo: int = 0
+limite: int = 500
+extrato: str = ""
+numero_saques: int = 0
+LIMITE_SAQUES: int = 3
+
+while True:
+    opcao: int = int(input(menu))
+
+    if opcao == 1:
+        print("Deposito")
+    
+    elif opcao == 2:
+        print("Saque")
+
+    elif opcao == 3:
+        print("Extrato")
+
+    elif opcao == 4:
+        break 
+
+    else:
+        print("Operação inválida, por favor selecione novamente a opção desejada.")
