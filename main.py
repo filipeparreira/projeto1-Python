@@ -88,6 +88,10 @@ def deposito(saldo, valor, extrato):
         extrato += '|' + f"Depósito: R$ {valor}.00".ljust(50, '-') + '|\n'
     return saldo, extrato
 
+def extrato(saldo, extrato):
+    extrato += "\n|" + f" Saldo em conta: R$ {saldo}.00 ".center(50, '-') + f"|\n{50*'-'}"
+    print(extrato)
+
 menu = '''
     [1] Depositar
     [2] Sacar 
@@ -100,7 +104,7 @@ menu = '''
 
 saldo: int = 0
 limite: int = 500
-extrato: str = print(f" Extrato ".center(30, '-'))
+extrato: str = f" Extrato ".center(50, '-') + '\n'
 numero_saques: int = 0
 LIMITE_SAQUES: int = 3
 saques: int = []
@@ -110,15 +114,7 @@ while True:
     opcao: int = int(input(menu))
 
     if opcao == 1:
-        print(8*"-" + " Deposito " + 8*"-")
-        valor: int = int(input("Valor: R$ "))
-        if valor <= 0:
-            print(f"Valor inválido.\n{30*"-"}")
-        else:
-            print("Valor depositado com sucesso.")
-            saldo += valor
-            depositos.append(valor)
-            print(f"Saldo atual: R$ {saldo}.00\n{30*"-"}")
+        
             
     
 
