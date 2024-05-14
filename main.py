@@ -88,9 +88,29 @@ def gera_extrato(saldo, extrato):
 
 
 # Novas funcoes
-def criaUsuario(user: dict, nome, endereco, data_nascimento, cpf):
+def criaUsuario(user: dict, nome, endereco, data_nascimento, cpf: str, lista_usuarios: list):
+    # Atribui os valores ao usuario
+    user["nome"] = nome
+    user["endereco"] = endereco
+    user["data_nascimento"] = data_nascimento
+    user["contas"] = list()
+    if cpf.isdigit:
+        user["cpf"] = cpf
+        # Adiciona o usuario na lista de usuarios
+        lista_usuarios.append(user.copy())
+    else:
+        print("Erro na operação: Informação de CPF inválida!\nUsuário não criado")
+
+    # Retornar a lista de usuarios
+    return lista_usuarios
     
-    return 0
+def preenche_endereco(endereco, logradouro, numero, bairro, cidade, estado):
+    endereco["logradouro"] = logradouro
+    endereco["numero"] = numero
+    endereco["bairro"] = bairro
+    endereco["cidade"] = cidade
+    endereco["estado"] = estado
+    return endereco
 
 
 menu = '''
