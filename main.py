@@ -44,17 +44,21 @@ Parte 2
             - Criar Conta Corrente:
                 - Deve armazenar as contas em uma lista 
                 - Uma conta tem agencia, numero de conta e usuario
-                - O numero de conta e sequencial, iniciado em 1
+                - O numero de conta e sequencial, iniciado em 1 (ou seja, na medida que as contas são criados
+                    o numero da conta eh incrementado com base no numero da conta anterior)
                 - O numero da agencia é fixo "0001"
                 - O usuario pode ter mais de uma conta, mas uma conta pertence somente a 1 usuario 
+                - (dica) Para vincular a nova conta a um usuario, utilizar o cpf do mesmo como chave de busca
+                - Caso nao encontre o usuario, nao criar a conta
 '''
-
 
 menu = '''
     [1] Depositar
     [2] Sacar 
     [3] Extrato
-    [4] Sair
+    [4] Criar Conta Usuario
+    [5] Criar Conta Corrente
+    [6] Sair
 
 => '''
 
