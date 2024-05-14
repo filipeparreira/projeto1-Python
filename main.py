@@ -54,7 +54,6 @@ Parte 2
 
 # Segmentando o codigo 
 def saque(saldo, valor, extrato, limite, numero_saques, limite_saques):
-    
     if valor > saldo or numero_saques == limite_saques or valor > limite:
         if valor > saldo:
             print(f"Erro na operação: Valor indisponivel em conta.\n{30*"-"}")
@@ -70,11 +69,9 @@ def saque(saldo, valor, extrato, limite, numero_saques, limite_saques):
         print(f"Saldo atual: R$ {saldo}.00\nNumero de saques realizados hoje: {numero_saques}\n{30*"-"}")
         extrato += '|' + f"Saque: R$ {valor}.00".ljust(50, '-') + '|\n'
 
-    return saldo, extrato
+    return saldo, extrato, numero_saques
 
 def deposito(saldo, valor, extrato):
-    print(8*"-" + " Deposito " + 8*"-")
-    valor: int = int(input("Valor: R$ "))
     if valor <= 0:
         print(f"Valor inválido.\n{30*"-"}")
     else:
@@ -85,7 +82,7 @@ def deposito(saldo, valor, extrato):
         extrato += '|' + f"Depósito: R$ {valor}.00".ljust(50, '-') + '|\n'
     return saldo, extrato
 
-def extrato(saldo, extrato):
+def gera_extrato(saldo, extrato):
     extrato += "\n|" + f" Saldo em conta: R$ {saldo}.00 ".center(50, '-') + f"|\n{50*'-'}"
     print(extrato)
 
@@ -111,18 +108,18 @@ while True:
     opcao: int = int(input(menu))
 
     if opcao == 1:
-        print(f" Saque ".center(20, '-'))
+        print(f" Deposito ".center(20, '-'))
         valor: int = int(input("Valor: R$ "))
         saldo, extrato = deposito(saldo, valor, extrato)           
     
 
     elif opcao == 2:
-        print(f"{8*"-"} Saque {8*"-"}")
+        print(f" Saque ".center(20, '-'))
         valor: int = int(input("Valor: R$ "))
-        saldo, extrato = saque(limite_saques=LIMITE_SAQUES, saldo=saldo, extrato=extrato, valor=valor, limite=limite, numero_saques=numero_saques)
+        saldo, extrato, numero_saques = saque(limite_saques=LIMITE_SAQUES, saldo=saldo, extrato=extrato, valor=valor, limite=limite, numero_saques=numero_saques)
         
     elif opcao == 3:
-        extrato(saldo, extrato=extrato)
+        gera_extrato(saldo, extrato=extrato)
 
     elif opcao == 6:
         break 
