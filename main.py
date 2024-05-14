@@ -55,9 +55,6 @@ Parte 2
 # Segmentando o codigo 
 def saque(saldo, valor, extrato, limite, numero_saques, limite_saques):
     
-    print(f" Saque ".center(20, '-'))
-    valor: int = int(input("Valor: R$ "))
-
     if valor > saldo or numero_saques == limite_saques or valor > limite:
         if valor > saldo:
             print(f"Erro na operação: Valor indisponivel em conta.\n{30*"-"}")
@@ -114,43 +111,20 @@ while True:
     opcao: int = int(input(menu))
 
     if opcao == 1:
-        
-            
+        print(f" Saque ".center(20, '-'))
+        valor: int = int(input("Valor: R$ "))
+        saldo, extrato = deposito(saldo, valor, extrato)           
     
 
     elif opcao == 2:
         print(f"{8*"-"} Saque {8*"-"}")
         valor: int = int(input("Valor: R$ "))
-
-        if valor > saldo or numero_saques == LIMITE_SAQUES or valor > limite:
-            if valor > saldo:
-                print(f"Erro na operação: Valor indisponivel em conta.\n{30*"-"}")
-            elif numero_saques == LIMITE_SAQUES:
-                print(f"Erro na operação: Quantidade de saques diários atingido.\n{30*"-"}")
-            elif valor > limite:
-                print(f"Erro na operação: Valor acima do limite de saque permitido.\n{30*"-"}")
-        else:
-            print("Valor sacado com sucesso.")
-            saldo -= valor
-            saques.append(valor)
-            numero_saques += 1
-            print(f"Saldo atual: R$ {saldo}.00\nNumero de saques realizados hoje: {numero_saques}\n{30*"-"}")
-
+        saldo, extrato = saque(limite_saques=LIMITE_SAQUES, saldo=saldo, extrato=extrato, valor=valor, limite=limite, numero_saques=numero_saques)
+        
     elif opcao == 3:
-        print(f" Extrato ".center(30, '-'))
-        extrato += '|' +" Saques ".center(30, '-') + '|\n'
-        for valor in saques:
-            extrato += '|' + f"R$ {valor}.00".ljust(30, '-') + '|\n'
-        
-        extrato += "\n|" + " Depositos ".center(30, '-') + '|\n'
-        for valor in depositos:
-            extrato += '|' + f"R$ {valor}.00".ljust(30, '-') + '|\n'
-        
-        extrato += "\n|" + f" Saldo em conta: R$ {saldo}.00 ".center(30, '-') + f"|\n{30*'-'}"
+        extrato(saldo, extrato=extrato)
 
-        print(extrato)
-
-    elif opcao == 4:
+    elif opcao == 6:
         break 
 
     else:
