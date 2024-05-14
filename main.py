@@ -52,6 +52,30 @@ Parte 2
                 - Caso nao encontre o usuario, nao criar a conta
 '''
 
+# Segmentando o codigo 
+def saque(saldo, valor, extrato, limite, numero_saques, limite_saques):
+    
+    print(f" Saque ".center(20, '-'))
+    valor: int = int(input("Valor: R$ "))
+
+    if valor > saldo or numero_saques == limite_saques or valor > limite:
+        if valor > saldo:
+            print(f"Erro na operação: Valor indisponivel em conta.\n{30*"-"}")
+        elif numero_saques == limite_saques:
+            print(f"Erro na operação: Quantidade de saques diários atingido.\n{30*"-"}")
+        elif valor > limite:
+            print(f"Erro na operação: Valor acima do limite de saque permitido.\n{30*"-"}")
+    else:
+        print("Valor sacado com sucesso.")
+        saldo -= valor
+        saques.append(valor)
+        numero_saques += 1
+        print(f"Saldo atual: R$ {saldo}.00\nNumero de saques realizados hoje: {numero_saques}\n{30*"-"}")
+        extrato += '|' + f"Saque: R$ {valor}.00".ljust(50, '-') + '|\n'
+
+    return saldo, extrato
+
+
 menu = '''
     [1] Depositar
     [2] Sacar 
@@ -64,7 +88,7 @@ menu = '''
 
 saldo: int = 0
 limite: int = 500
-extrato: str = ""
+extrato: str = print(f" Extrato ".center(30, '-'))
 numero_saques: int = 0
 LIMITE_SAQUES: int = 3
 saques: int = []
