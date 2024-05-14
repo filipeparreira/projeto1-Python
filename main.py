@@ -86,6 +86,11 @@ def gera_extrato(saldo, extrato):
     extrato += "|" + f" Saldo em conta: R$ {saldo}.00 ".center(50, '-') + f"|\n{50*'-'}"
     print(extrato)
 
+
+# Novas funcoes
+
+
+
 menu = '''
     [1] Depositar
     [2] Sacar 
@@ -103,6 +108,13 @@ numero_saques: int = 0
 LIMITE_SAQUES: int = 3
 saques: int = []
 depositos: int = []
+lista_usuarios: list = []
+contas: list = []
+usuario_end: dict = {"logradouro": "", "numero": "", "bairro": "", "cidade": "", "estado" : "", "contas" : contas}
+usuario: dict = {"nome" : "", "data_nascimeto" : "", "cpf" : "", "endereco": usuario_end}
+conta: dict = {"agencia" : "0001", "numero_conta": 0, "usuario": usuario}
+
+
 
 while True:
     opcao: int = int(input(menu))
