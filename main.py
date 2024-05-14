@@ -75,6 +75,18 @@ def saque(saldo, valor, extrato, limite, numero_saques, limite_saques):
 
     return saldo, extrato
 
+def deposito(saldo, valor, extrato):
+    print(8*"-" + " Deposito " + 8*"-")
+    valor: int = int(input("Valor: R$ "))
+    if valor <= 0:
+        print(f"Valor inválido.\n{30*"-"}")
+    else:
+        print("Valor depositado com sucesso.")
+        saldo += valor
+        depositos.append(valor)
+        print(f"Saldo atual: R$ {saldo}.00\n{30*"-"}")
+        extrato += '|' + f"Depósito: R$ {valor}.00".ljust(50, '-') + '|\n'
+    return saldo, extrato
 
 menu = '''
     [1] Depositar
