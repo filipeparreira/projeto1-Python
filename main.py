@@ -88,7 +88,7 @@ def gera_extrato(saldo, extrato):
 
 
 # Novas funcoes
-def criaUsuario(user: dict, nome, endereco, data_nascimento, cpf: str, lista_usuarios: list):
+def cria_usuario(user: dict, nome, endereco, data_nascimento, cpf: str, lista_usuarios: list):
     # Atribui os valores ao usuario
     user["nome"] = nome
     user["endereco"] = endereco
