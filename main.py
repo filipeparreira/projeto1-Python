@@ -88,7 +88,9 @@ def gera_extrato(saldo, extrato):
 
 
 # Novas funcoes
-
+def criaUsuario(user: dict, nome, endereco, data_nascimento, cpf):
+    
+    return 0
 
 
 menu = '''
@@ -110,8 +112,8 @@ saques: int = []
 depositos: int = []
 lista_usuarios: list = []
 contas: list = []
-usuario_end: dict = {"logradouro": "", "numero": "", "bairro": "", "cidade": "", "estado" : "", "contas" : contas}
-usuario: dict = {"nome" : "", "data_nascimeto" : "", "cpf" : "", "endereco": usuario_end}
+usuario_end: dict = {"logradouro": "", "numero": "", "bairro": "", "cidade": "", "estado" : ""}
+usuario: dict = {"nome" : "", "data_nascimeto" : "", "cpf" : "", "endereco": usuario_end, "contas" : contas}
 conta: dict = {"agencia" : "0001", "numero_conta": 0, "usuario": usuario}
 
 
