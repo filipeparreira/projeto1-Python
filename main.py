@@ -83,7 +83,7 @@ def deposito(saldo, valor, extrato):
     return saldo, extrato
 
 def gera_extrato(saldo, extrato):
-    extrato += "\n|" + f" Saldo em conta: R$ {saldo}.00 ".center(50, '-') + f"|\n{50*'-'}"
+    extrato += "|" + f" Saldo em conta: R$ {saldo}.00 ".center(50, '-') + f"|\n{50*'-'}"
     print(extrato)
 
 menu = '''
