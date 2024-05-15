@@ -127,6 +127,11 @@ def busca_usuario(cpf, lista_users:list):
     lista_users.remove(user)
     return user
 
+def lista_users(lista_users:list):
+    print(f" Lista de Usuarios Cadastrados ".center(50, '-'))
+    for conta in lista_users:
+        print(f"Nome: {conta["nome"]}   Data Nasc.: {conta["data_nascimento"]}  Nº de Contas: {len(conta["contas"])}".center(100))
+
 menu = '''
     [1] Depositar
     [2] Sacar 
