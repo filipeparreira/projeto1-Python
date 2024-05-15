@@ -104,6 +104,7 @@ def cria_usuario(user: dict, nome, endereco, data_nascimento, cpf: str, lista_us
     else:
         print("Erro na operação: Informação de CPF inválida!\nUsuário não criado")
 
+    print(f" Usuario Criado ".center(20, '-'))
     # Retornar a lista de usuarios
     return lista_usuarios
     
@@ -124,13 +125,15 @@ def cria_conta_corrente(user:dict, conta:dict, contas:list, lista_users: list):
 
 def busca_usuario(cpf, lista_users:list):
     user = list(filter(lambda usuario: usuario["cpf"] == cpf, lista_users))
-    lista_users.remove(user)
+    if user:
+        lista_users.remove(user)
     return user
 
-def lista_users(lista_users:list):
+def listar_users(lista_users:list):
     print(f" Lista de Usuarios Cadastrados ".center(50, '-'))
     for conta in lista_users:
-        print(f"Nome: {conta["nome"]}   Data Nasc.: {conta["data_nascimento"]}  Nº de Contas: {len(conta["contas"])}".center(100))
+        print(f"Nome: {conta["nome"]}   Data Nasc.: {conta["data_nascimento"]}  Nº de Contas: {len(conta["contas"])}".ljust(100))
+    print(f"".center(50, '-'))
 
 menu = '''
     [1] Depositar
@@ -138,7 +141,8 @@ menu = '''
     [3] Extrato
     [4] Criar Conta Usuario
     [5] Criar Conta Corrente
-    [6] Sair
+    [6] Listar Usuarios
+    [7] Sair
 
 => '''
 
@@ -174,7 +178,26 @@ while True:
     elif opcao == 3:
         gera_extrato(saldo, extrato=extrato)
 
+    elif opcao == 4:
+        print(f" Criar User ".center(20, '-'))
+        nome:str = str(input("Nome: "))
+        data_nasc:str = str(input("Data de Nascimento: "))
+        cpf:str = str(input("CPF (somente números): "))
+        if busca_usuario(cpf, lista_usuarios):
+            print("Erro na operação: CPF já presente na base de dados.\nUsuário não criado")
+            continue
+        print(f" Endereço ".ljust(20, '-'))
+        usuario_end["logradouro"] = str(input("Rua: "))
+        usuario_end["numero"] = str(input("Numero: "))
+        usuario_end["bairro"] = str(input("Bairro: "))
+        usuario_end["cidade"] = str(input("Cidade: "))
+        usuario_end["estado"] = str(input("Estado (sigla): "))
+        lista_usuarios = cria_usuario(usuario, nome, usuario_end.copy, data_nasc, cpf, lista_usuarios)        
+
     elif opcao == 6:
+        listar_users(lista_usuarios)
+
+    elif opcao == 7:
         break 
 
     else:
