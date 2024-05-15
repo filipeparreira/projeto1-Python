@@ -119,14 +119,14 @@ def preenche_endereco(endereco, logradouro, numero, bairro, cidade, estado):
 def cria_conta_corrente(user:dict, conta:dict, contas:list, lista_users: list):
     conta["numero_conta"] = len(contas) + 1
     conta["usuario"] = user
+    ### Resolver o problema do append
     user["contas"].append(conta)
     lista_users.append(user)
+    print(f" CC Criada ".center(20, '-'))
     return lista_users
 
 def busca_usuario(cpf, lista_users:list):
     user = list(filter(lambda usuario: usuario["cpf"] == cpf, lista_users))
-    if user:
-        lista_users.remove(user)
     return user
 
 def listar_users(lista_users:list):
@@ -193,6 +193,22 @@ while True:
         usuario_end["cidade"] = str(input("Cidade: "))
         usuario_end["estado"] = str(input("Estado (sigla): "))
         lista_usuarios = cria_usuario(usuario, nome, usuario_end.copy, data_nasc, cpf, lista_usuarios)        
+
+    elif opcao == 5:
+        print(f" Criar CC ".center(20, '-'))
+        cpf:str = str(input("CPF do usuario: "))
+        user = busca_usuario(cpf, lista_usuarios)
+        if user:
+            ### Encontrar alguma forma de pegar a posição do item na lista
+            
+            #lista_usuarios.remove((i for i, item in enumerate(lista_usuarios) if item["cpf"] == cpf))
+            lista_usuarios = cria_conta_corrente(user, conta, contas, lista_usuarios)
+            
+            
+
+        else:
+            print("Erro na operação: Usuário não encontrado.\nConta Corrente não criada")
+
 
     elif opcao == 6:
         listar_users(lista_usuarios)
