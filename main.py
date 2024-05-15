@@ -94,7 +94,10 @@ def cria_usuario(user: dict, nome, endereco, data_nascimento, cpf: str, lista_us
     user["endereco"] = endereco
     user["data_nascimento"] = data_nascimento
     user["contas"] = list()
-    if cpf.isdigit:
+    
+    if busca_usuario(cpf, lista_usuarios):
+        print("Erro na operação: CPF já presente na base de dados.\nUsuário não criado")
+    elif cpf.isdigit:
         user["cpf"] = cpf
         # Adiciona o usuario na lista de usuarios
         lista_usuarios.append(user.copy())
@@ -112,6 +115,17 @@ def preenche_endereco(endereco, logradouro, numero, bairro, cidade, estado):
     endereco["estado"] = estado
     return endereco
 
+def cria_conta_corrente(user:dict, conta:dict, contas:list, lista_users: list):
+    conta["numero_conta"] = len(contas) + 1
+    conta["usuario"] = user
+    user["contas"].append(conta)
+    lista_users.append(user)
+    return lista_users
+
+def busca_usuario(cpf, lista_users:list):
+    user = list(filter(lambda usuario: usuario["cpf"] == cpf, lista_users))
+    lista_users.remove(user)
+    return user
 
 menu = '''
     [1] Depositar
