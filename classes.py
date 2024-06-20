@@ -39,25 +39,31 @@ class Transacao(ABC):
     def regitrar(conta):
         pass
          
-class Deposito:
+class Deposito(Transacao):
+    def __init__(self, valor) -> float:
+        self._valor = valor
+    
+    def registrar(conta):
+        pass
+
+class Saque(Transacao):
     def __init__(self, valor) -> float:
         self._valor = valor
 
-class Saque:
-    def __init__(self, valor) -> float:
-        self._valor = valor
+    def registrar(conta):
+        pass
 
 class Historico:
     def adicionar_transacao(transacao):
         pass
 
-class PessoaFisica:
+class PessoaFisica(Cliente):
     def __init__(self, cpf, nome, data_nascimento):
         self._cpf = cpf
         self._nome = nome
         self._data_nascimento = data_nascimento
 
-class ContaCorrente:
+class ContaCorrente(Conta):
     def __init__(self, limite, limite_saques):
         self._limite = limite
         self._limite_saques = limite_saques
